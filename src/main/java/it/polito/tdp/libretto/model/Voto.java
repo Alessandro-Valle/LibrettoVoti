@@ -1,7 +1,6 @@
 package it.polito.tdp.libretto.model;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class Voto {
 
@@ -50,6 +49,29 @@ public class Voto {
 			return true;
 		return false;
 	}
+	
+	public boolean isDuplicato(Voto altro) {
+		return this.getCorso().equals(altro.getCorso()) && this.getPunti() == altro.getPunti();
+	}
+	
+	public boolean isConflitto(Voto altro) {
+		return this.getCorso().equals(altro.getCorso()) && this.getPunti() != altro.getPunti();
+	}
+	
+	public Voto clone() {
+		return new Voto(this.corso, this.punti, this.dataEsame);
+	}
+	
+	
+//	Copy constructor di Voto
+	public Voto(Voto v) {
+		this.corso = v.corso;
+		this.punti = v.punti;
+		this.dataEsame = v.dataEsame;
+	}
+	
+	
+	
 
 	
 	
